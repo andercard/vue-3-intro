@@ -38,7 +38,6 @@ export {
 /**
  * multiple nodes
  * <script setup>
- *
  */
 </script>
 
