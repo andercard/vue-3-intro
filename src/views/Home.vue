@@ -1,28 +1,49 @@
 <template>
 <section class="p-4">
-  <h4 class="h4 text-center">Provide & Inject</h4>
+  <h4 class="h4 text-center">Vue 3</h4>
 
-  <input class="form-control">
+  <input
+    v-model="name"
+    class="form-control">
 
+  <div class="my-text">
+    {{ name }}
+  </div>
+
+  <button @click="incrementSize">
+    incrementSize
+  </button>
 </section>
 </template>
 
-<script>
-export default {
-  name: 'Home',
+<script setup>
+const { ref, computed } = require('vue');
 
-  setup () {
-  }
+
+const name = ref('Christian')
+const size = ref(10)
+
+function incrementSize () {
+  size.value++
+}
+
+const computedSize = computed(() => size.value + 'px')
+
+export {
+  name,
+  incrementSize,
+  computedSize
 }
 
 /**
  * multiple nodes
- *
  * <script setup>
  *
- * <style vars="{ size }">
- * .class {
- *    font-size: var(--size);
- * }
  */
 </script>
+
+<style vars="{ computedSize }">
+.my-text {
+ font-size: var(--computedSize);
+}
+</style>
